@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bloque_Intermitente : Bloque
 {
-    private Renderer renderer;
+    new private Renderer renderer;
+    new private Collider collider;
     private bool isOn = true;
     private float timer = 0f;
     private float cycleTime = 5f;
@@ -13,6 +14,7 @@ public class Bloque_Intermitente : Bloque
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        collider = GetComponent<Collider>(); // Obtén el componente Collider
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class Bloque_Intermitente : Bloque
         {
             isOn = !isOn;
             renderer.enabled = isOn;
+            collider.enabled = isOn; // Activa o desactiva el Collider junto con el Renderer
             timer = 0f;
         }
     }
